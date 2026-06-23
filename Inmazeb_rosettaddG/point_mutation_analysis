@@ -3,16 +3,6 @@
     {
       "cell_type": "markdown",
       "metadata": {
-        "id": "view-in-github",
-        "colab_type": "text"
-      },
-      "source": [
-        "<a href=\"https://colab.research.google.com/github/cknabukeera/Ebola_Vaccine-mAB_Epitopes_mutation_Analysis/blob/main/Inmazeb_rosettaddG/point_mutation_analysis\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
-      ]
-    },
-    {
-      "cell_type": "markdown",
-      "metadata": {
         "id": "JdmDoI8U8RvW"
       },
       "source": [
@@ -93,20 +83,49 @@
     },
     {
       "cell_type": "code",
-      "execution_count": 5,
+      "execution_count": 1,
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/"
         },
         "id": "-1bN0zDc8Rvj",
-        "outputId": "51ec4ff4-b15d-42e6-e345-fd5acd583888"
+        "outputId": "6f3765d1-d970-4b49-b863-f99132ced5ad"
       },
       "outputs": [
         {
           "output_type": "stream",
           "name": "stdout",
           "text": [
-            "Requirement already satisfied: pyrosettacolabsetup in /usr/local/lib/python3.12/dist-packages (1.1.0)\n",
+            "Collecting pyrosettacolabsetup\n",
+            "  Downloading pyrosettacolabsetup-1.1.0-py3-none-any.whl.metadata (406 bytes)\n",
+            "Downloading pyrosettacolabsetup-1.1.0-py3-none-any.whl (5.0 kB)\n",
+            "Installing collected packages: pyrosettacolabsetup\n",
+            "Successfully installed pyrosettacolabsetup-1.1.0\n",
+            "\n",
+            "Note that USE OF PyRosetta FOR COMMERCIAL PURPOSES REQUIRE PURCHASE OF A LICENSE.\n",
+            "See https://github.com/RosettaCommons/rosetta/blob/main/LICENSE.md or email license@uw.edu for details.\n",
+            "\n",
+            "Looking for compatible PyRosetta wheel file at google-drive/PyRosetta/colab.bin//wheels...\n",
+            "Downloading PyRosetta package...\n",
+            "--2026-06-23 09:19:45--  https://west.rosettacommons.org/pyrosetta/quarterly/release/pyrosetta-0-cp312-cp312-linux_x86_64.whl\n",
+            "Resolving west.rosettacommons.org (west.rosettacommons.org)... 128.95.160.134, 128.95.160.135, 2607:4000:406::160:134, ...\n",
+            "\n",
+            "HTTP request sent, awaiting response... 200 OK\n",
+            "Length: 1662376546 (1.5G) [application/octet-stream]\n",
+            "--2026-06-23 09:19:45--  https://west.rosettacommons.org/pyrosetta/quarterly/release/pyrosetta-0-cp312-cp312-linux_x86_64.whl\n",
+            "Reusing existing connection to west.rosettacommons.org:443.\n",
+            "HTTP request sent, awaiting response... 200 OK\n",
+            "Length: 1662376546 (1.5G) [application/octet-stream]\n",
+            "Saving to: ‘/PyRosetta/colab.bin/tmpmfm9_okq/pyrosetta-0-cp312-cp312-linux_x86_64.whl’\n",
+            "\n",
+            "pyrosetta-0-cp312-c 100%[===================>]   1.55G  20.5MB/s    in 44s     \n",
+            "\n",
+            "2026-06-23 09:20:30 (35.7 MB/s) - ‘/PyRosetta/colab.bin/tmpmfm9_okq/pyrosetta-0-cp312-cp312-linux_x86_64.whl’ saved [1662376546/1662376546]\n",
+            "Moving wheel file pyrosetta-0-cp312-cp312-linux_x86_64.whl to target dir /PyRosetta/colab.bin/wheels...\n",
+            "Installing PyRosetta wheel '/PyRosetta/colab.bin/wheels/pyrosetta-0-cp312-cp312-linux_x86_64.whl'...\n",
+            "\n",
+            "\n",
+            "\n",
             "┌───────────────────────────────────────────────────────────────────────────────┐\n",
             "│                                  PyRosetta-4                                  │\n",
             "│               Created in JHU by Sergey Lyskov and PyRosetta Team              │\n",
@@ -120,8 +139,8 @@
             "core.init: Rosetta version: PyRosetta4.Release.python312.ubuntu r1 2026.03+releasequarterly.5e498f1409 5e498f1409c68ade56c8ce5842bf79e1b02e8db4 http://www.pyrosetta.org 2026-01-13T13:24:11\n",
             "core.init: Rosetta extras: []\n",
             "core.init: command: PyRosetta -ex1 -ex2aro -database /usr/local/lib/python3.12/dist-packages/pyrosetta/database\n",
-            "basic.random.init_random_generator: 'RNG device' seed mode, using '/dev/urandom', seed=-1907644213 seed_offset=0 real_seed=-1907644213\n",
-            "basic.random.init_random_generator: RandomGenerator:init: Normal mode, seed=-1907644213 RG_type=mt19937\n"
+            "basic.random.init_random_generator: 'RNG device' seed mode, using '/dev/urandom', seed=553459644 seed_offset=0 real_seed=553459644\n",
+            "basic.random.init_random_generator: RandomGenerator:init: Normal mode, seed=553459644 RG_type=mt19937\n"
           ]
         }
       ],
@@ -143,6 +162,19 @@
       ]
     },
     {
+      "cell_type": "code",
+      "source": [
+        "#Cleaning the PDB file\n",
+        "from pyrosetta.toolbox import cleanATOM\n",
+        "cleanATOM(\"7TN9.pdb\")"
+      ],
+      "metadata": {
+        "id": "ozkvrOhe0gC5"
+      },
+      "execution_count": 5,
+      "outputs": []
+    },
+    {
       "cell_type": "markdown",
       "metadata": {
         "id": "JkMqBiLZ-i7K"
@@ -159,7 +191,7 @@
           "base_uri": "https://localhost:8080/"
         },
         "id": "CUe-0OB78Rv0",
-        "outputId": "04bd2d83-e7bb-4450-910b-a85e0e9fa209"
+        "outputId": "de08e0a0-9168-4ece-9255-e0c77555a67d"
       },
       "outputs": [
         {
@@ -179,35 +211,69 @@
             "core.init: Rosetta version: PyRosetta4.Release.python312.ubuntu r1 2026.03+releasequarterly.5e498f1409 5e498f1409c68ade56c8ce5842bf79e1b02e8db4 http://www.pyrosetta.org 2026-01-13T13:24:11\n",
             "core.init: Rosetta extras: []\n",
             "core.init: command: PyRosetta -ex1 -ex2aro -database /usr/local/lib/python3.12/dist-packages/pyrosetta/database\n",
-            "basic.random.init_random_generator: 'RNG device' seed mode, using '/dev/urandom', seed=2012392236 seed_offset=0 real_seed=2012392236\n",
-            "basic.random.init_random_generator: RandomGenerator:init: Normal mode, seed=2012392236 RG_type=mt19937\n",
+            "basic.random.init_random_generator: 'RNG device' seed mode, using '/dev/urandom', seed=208729970 seed_offset=0 real_seed=208729970\n",
+            "basic.random.init_random_generator: RandomGenerator:init: Normal mode, seed=208729970 RG_type=mt19937\n",
             "core.chemical.GlobalResidueTypeSet: Finished initializing fa_standard residue type set.  Created 985 residue types\n",
-            "core.chemical.GlobalResidueTypeSet: Total time to initialize 1.53222 seconds.\n",
-            "core.import_pose.import_pose: File 'zaire_atoltivimab.pdb' automatically determined to be of type PDB from contents.\n",
-            "core.chemical.GlobalResidueTypeSet: Loading (but possibly not actually using) 'NAG' from the PDB components dictionary for residue type 'pdb_NAG'\n",
-            "core.io.pose_from_sfr.PoseFromSFRBuilder: Adding undetected upper terminus type to residue 269,  312 A\n",
-            "core.conformation.Conformation: [ WARNING ] missing heavyatom:  OXT on residue ASN:CtermProteinFull 269\n",
-            "core.conformation.Conformation: [ WARNING ] missing heavyatom: O1 on residue pdb_NAG 270\n",
-            "core.conformation.Conformation: [ WARNING ] missing heavyatom: O1 on residue pdb_NAG 271\n",
-            "core.conformation.Conformation: [ WARNING ] missing heavyatom: O1 on residue pdb_NAG 272\n",
-            "core.conformation.Conformation: [ WARNING ] missing heavyatom:  OXT on residue HIS:CtermProteinFull 382\n",
-            "core.conformation.Conformation: [ WARNING ] missing heavyatom:  OXT on residue SER:CtermProteinFull 497\n",
-            "core.conformation.Conformation: [ WARNING ] missing heavyatom:  OXT on residue LYS:CtermProteinFull 604\n",
-            "core.conformation.Conformation: [ WARNING ] missing heavyatom:  CB  on residue LYS:CtermProteinFull 604\n",
-            "core.conformation.Conformation: [ WARNING ] missing heavyatom:  CG  on residue LYS:CtermProteinFull 604\n",
-            "core.conformation.Conformation: [ WARNING ] missing heavyatom:  CD  on residue LYS:CtermProteinFull 604\n",
-            "core.conformation.Conformation: [ WARNING ] missing heavyatom:  CE  on residue LYS:CtermProteinFull 604\n",
-            "core.conformation.Conformation: [ WARNING ] missing heavyatom:  NZ  on residue LYS:CtermProteinFull 604\n",
-            "core.conformation.Conformation: Found disulfide between residues 77 104\n",
-            "core.conformation.Conformation: Found disulfide between residues 90 116\n",
-            "core.conformation.Conformation: Found disulfide between residues 280 325\n",
-            "core.conformation.Conformation: Found disulfide between residues 370 377\n",
-            "core.conformation.Conformation: Found disulfide between residues 404 478\n",
-            "core.conformation.Conformation: Found disulfide between residues 519 584\n",
-            "core.pack.pack_missing_sidechains: packing residue number 270 because of missing atom number 10 atom name O1\n",
-            "core.pack.pack_missing_sidechains: packing residue number 271 because of missing atom number 10 atom name O1\n",
-            "core.pack.pack_missing_sidechains: packing residue number 272 because of missing atom number 10 atom name O1\n",
-            "core.pack.pack_missing_sidechains: packing residue number 604 because of missing atom number 6 atom name  CB\n",
+            "core.chemical.GlobalResidueTypeSet: Total time to initialize 1.56604 seconds.\n",
+            "core.import_pose.import_pose: File '7TN9.clean.pdb' automatically determined to be of type PDB from contents.\n",
+            "core.conformation.Conformation: [ WARNING ] missing heavyatom:  OXT on residue VAL:CtermProteinFull 116\n",
+            "core.conformation.Conformation: [ WARNING ] missing heavyatom:  OXT on residue ASN:CtermProteinFull 385\n",
+            "core.conformation.Conformation: [ WARNING ] missing heavyatom:  OXT on residue GLU:CtermProteinFull 622\n",
+            "core.conformation.Conformation: [ WARNING ] missing heavyatom:  OXT on residue ASN:CtermProteinFull 891\n",
+            "core.conformation.Conformation: [ WARNING ] missing heavyatom:  OXT on residue ILE:CtermProteinFull 996\n",
+            "core.conformation.Conformation: [ WARNING ] missing heavyatom:  OXT on residue LEU:CtermProteinFull 1099\n",
+            "core.conformation.Conformation: [ WARNING ] missing heavyatom:  OXT on residue LYS:CtermProteinFull 1212\n",
+            "core.conformation.Conformation: [ WARNING ] missing heavyatom:  OXT on residue HIS:CtermProteinFull 1322\n",
+            "core.conformation.Conformation: [ WARNING ] missing heavyatom:  OXT on residue VAL:CtermProteinFull 1438\n",
+            "core.conformation.Conformation: [ WARNING ] missing heavyatom:  OXT on residue VAL:CtermProteinFull 1553\n",
+            "core.conformation.Conformation: [ WARNING ] missing heavyatom:  OXT on residue SER:CtermProteinFull 1668\n",
+            "core.conformation.Conformation: [ WARNING ] missing heavyatom:  OXT on residue LYS:CtermProteinFull 1775\n",
+            "core.conformation.Conformation: [ WARNING ] missing heavyatom:  CB  on residue LYS:CtermProteinFull 1775\n",
+            "core.conformation.Conformation: [ WARNING ] missing heavyatom:  CG  on residue LYS:CtermProteinFull 1775\n",
+            "core.conformation.Conformation: [ WARNING ] missing heavyatom:  CD  on residue LYS:CtermProteinFull 1775\n",
+            "core.conformation.Conformation: [ WARNING ] missing heavyatom:  CE  on residue LYS:CtermProteinFull 1775\n",
+            "core.conformation.Conformation: [ WARNING ] missing heavyatom:  NZ  on residue LYS:CtermProteinFull 1775\n",
+            "core.conformation.Conformation: [ WARNING ] missing heavyatom:  OXT on residue THR:CtermProteinFull 1876\n",
+            "core.conformation.Conformation: [ WARNING ] missing heavyatom:  OXT on residue VAL:CtermProteinFull 1991\n",
+            "core.conformation.Conformation: [ WARNING ] missing heavyatom:  OXT on residue HIS:CtermProteinFull 2101\n",
+            "core.conformation.Conformation: [ WARNING ] missing heavyatom:  OXT on residue HIS:CtermProteinFull 2208\n",
+            "core.conformation.Conformation: [ WARNING ] missing heavyatom:  OXT on residue THR:CtermProteinFull 2321\n",
+            "core.conformation.Conformation: [ WARNING ] missing heavyatom:  OXT on residue ILE:CtermProteinFull 2416\n",
+            "core.conformation.Conformation: [ WARNING ] missing heavyatom:  OXT on residue VAL:CtermProteinFull 2532\n",
+            "core.conformation.Conformation: [ WARNING ] missing heavyatom:  OXT on residue VAL:CtermProteinFull 2648\n",
+            "core.conformation.Conformation: [ WARNING ] missing heavyatom:  OXT on residue LYS:CtermProteinFull 2761\n",
+            "core.conformation.Conformation: [ WARNING ] missing heavyatom:  OXT on residue LYS:CtermProteinFull 2874\n",
+            "core.conformation.Conformation: Found disulfide between residues 22 95\n",
+            "core.conformation.Conformation: Found disulfide between residues 193 220\n",
+            "core.conformation.Conformation: Found disulfide between residues 206 232\n",
+            "core.conformation.Conformation: Found disulfide between residues 407 2097\n",
+            "core.conformation.Conformation: Found disulfide between residues 462 489\n",
+            "core.conformation.Conformation: Found disulfide between residues 475 501\n",
+            "core.conformation.Conformation: Found disulfide between residues 644 2204\n",
+            "core.conformation.Conformation: Found disulfide between residues 699 726\n",
+            "core.conformation.Conformation: Found disulfide between residues 712 738\n",
+            "core.conformation.Conformation: Found disulfide between residues 914 979\n",
+            "core.conformation.Conformation: Found disulfide between residues 1019 1084\n",
+            "core.conformation.Conformation: Found disulfide between residues 1122 1193\n",
+            "core.conformation.Conformation: Found disulfide between residues 1220 1265\n",
+            "core.conformation.Conformation: Found disulfide between residues 1310 1317\n",
+            "core.conformation.Conformation: Found disulfide between residues 1344 1418\n",
+            "core.conformation.Conformation: Found disulfide between residues 1459 1533\n",
+            "core.conformation.Conformation: Found disulfide between residues 1575 1649\n",
+            "core.conformation.Conformation: Found disulfide between residues 1690 1755\n",
+            "core.conformation.Conformation: Found disulfide between residues 1798 1863\n",
+            "core.conformation.Conformation: Found disulfide between residues 1897 1971\n",
+            "core.conformation.Conformation: Found disulfide between residues 1999 2044\n",
+            "core.conformation.Conformation: Found disulfide between residues 2089 2096\n",
+            "core.conformation.Conformation: Found disulfide between residues 2106 2151\n",
+            "core.conformation.Conformation: Found disulfide between residues 2196 2203\n",
+            "core.conformation.Conformation: Found disulfide between residues 2230 2304\n",
+            "core.conformation.Conformation: Found disulfide between residues 2332 2397\n",
+            "core.conformation.Conformation: Found disulfide between residues 2438 2511\n",
+            "core.conformation.Conformation: Found disulfide between residues 2554 2627\n",
+            "core.conformation.Conformation: Found disulfide between residues 2671 2742\n",
+            "core.conformation.Conformation: Found disulfide between residues 2784 2855\n",
+            "core.pack.pack_missing_sidechains: packing residue number 1775 because of missing atom number 6 atom name  CB\n",
             "core.pack.task: Packer task: initialize from command line()\n",
             "core.scoring.ScoreFunctionFactory: SCOREFUNCTION: ref2015\n",
             "core.scoring.etable: Starting energy table calculation\n",
@@ -236,24 +302,21 @@
             "core.pack.dunbrack.RotamerLibrary: shapovalov_lib::shap_dun10_smooth_level of 1( aka lowest_smooth ) got activated.\n",
             "core.pack.dunbrack.RotamerLibrary: Binary rotamer library selected: /usr/local/lib/python3.12/dist-packages/pyrosetta/database/rotamer/shapovalov/StpDwn_0-0-0/Dunbrack10.lib.bin\n",
             "core.pack.dunbrack.RotamerLibrary: Using Dunbrack library binary file '/usr/local/lib/python3.12/dist-packages/pyrosetta/database/rotamer/shapovalov/StpDwn_0-0-0/Dunbrack10.lib.bin'.\n",
-            "core.pack.dunbrack.RotamerLibrary: Dunbrack 2010 library took 0.236428 seconds to load from binary\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.pack_rotamers: built 4 rotamers at 4 positions.\n",
+            "core.pack.dunbrack.RotamerLibrary: Dunbrack 2010 library took 0.598319 seconds to load from binary\n",
+            "core.pack.pack_rotamers: built 1 rotamers at 1 positions.\n",
             "core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph\n",
-            "PDB file name: zaire_atoltivimab.pdb\n",
-            "Total residues: 604\n",
-            "Sequence: SIPLGVIHNSTLQVSDVDKLVCRDKLSSTNQLRSVGLNLEGNGVATDVPSATKRWGFRSGVPPKVVNYEAGEWAENCYNLEIKKPDGSECLPAAPDGIRGFPRCRYVHKVSGTGPCAGDFAFHKEGAFFLYDRLASTVIYRGTTFAEGVVAFLILPQAKKDFFSSHPLGYYSTTIRYQATGFGTNETEYLFEVDNLTYVQLESRFTPQFLLQLNETIYTSGKRSNTTGKLIWKVNPEIDTTIGEWAFWETKKNLTRKIRSEELSFTVVNZZZIVNAQPKCNPNLHYWTTQDEGAAIGLAWIPYFGPAAEGIYTEGLMHNQDGLICGLRQLANETTQALQLFLRATTELRTFSILNRKAIDFLLQRWGGTCHILGPDCCIEPHQVQLVESGGGVVQPGRSLRLSCAASGFTFNNYGMHWVRQAPGMGLEWVAVIWHDGSDKYYADSVKGRFTISRDNSKNTLYLQMNSLRAEDTAVYYCARNWNLFDYWGQGTLVTVSIQMTQSPSSLSASVGDRITITCRASQSISTYLHWYQQKPGKAPKLLIYAASTLQSGVPSRFSGSGSGTDFTLTISSLQPEDFATYYCQQSFSTPPINFGQGTKLEIK\n",
+            "PDB file name: 7TN9.clean.pdb\n",
+            "Total residues: 2874\n",
+            "Sequence: EVQLVESGGGLVQPGGSLRLSCAASGFTFSSYDMHWVRQATGKGLEWVSAIGTAGDTYYPGSVKGRFTISRENAKNSLYLQMNSLRAGDTAVYYCARTWFGELYFDYWGQGTLVTVSIPLGVIHNSTLQVSDVDKLVCRDKLSSTNQLRSVGLNLEGNGVATDVPSATKRWGFRSGVPPKVVNYEAGEWAENCYNLEIKKPDGSECLPAAPDGIRGFPRCRYVHKVSGTGPCAGDFAFHKEGAFFLYDRLASTVIYRGTTFAEGVVAFLILPQAKKDFFSSHPLGYYSTTIRYQATGFGTNETEYLFEVDNLTYVQLESRFTPQFLLQLNETIYTSGKRSNTTGKLIWKVNPEIDTTIGEWAFWETKKNLTRKIRSEELSFTVVNSIPLGVIHNSTLQVSDVDKLVCRDKLSSTNQLRSVGLNLEGNGVATDVPSATKRWGFRSGVPPKVVNYEAGEWAENCYNLEIKKPDGSECLPAAPDGIRGFPRCRYVHKVSGTGPCAGDFAFHKEGAFFLYDRLASTVIYRGTTFAEGVVAFLILPQAKKDFFSSHPLGYYSTTIRYQATGFGTNETEYLFEVDNLTYVQLESRFTPQFLLQLNETIYGKLIWKVNPTTIGEWAFWESIPLGVIHNSTLQVSDVDKLVCRDKLSSTNQLRSVGLNLEGNGVATDVPSATKRWGFRSGVPPKVVNYEAGEWAENCYNLEIKKPDGSECLPAAPDGIRGFPRCRYVHKVSGTGPCAGDFAFHKEGAFFLYDRLASTVIYRGTTFAEGVVAFLILPQAKKDFFSSHPLGYYSTTIRYQATGFGTNETEYLFEVDNLTYVQLESRFTPQFLLQLNETIYTSGKRSNTTGKLIWKVNPEIDTTIGEWAFWETKKNLTRKIRSEELSFTVVNDIQMTQSPSSLSASVGDRVTITCRASQSISSFLNWYQQKPGKAPKLLIYAASSLQSGVPSRFSGSGSGTDFTLTISSLQPEDFATYYCQQSYSTLTFGQGTRLEIDIQMTQSPSSLSASVGDRVTITCRASQSISSFLNWYQQKPGKAPKLLIYAASSLQSGVPSRFSGSGSGTDFTLTISSLQPEDFATYYCQQSYSTLTFGQGTRLDIVMTQSPDSLAVSLGERATINCKSSQSVLYSSNNKNYLAWYQQKPGQPPKLLIYWASTRESGVPDRFSGSGSGTEFTLTITSLQAEDVAVYYCQQYYSSPLTFGGGTKVEIKIVNAQPKCNPNLHYWTTQDEGAAIGLAWIPYFGPAAEGIYTEGLMHNQDGLICGLRQLANETTQALQLFLRATTELRTFSILNRKAIDFLLQRWGGTCHILGPDCCIEPHEVQLVESGGGLVQPGGSLRLSCAASGFTSSSYAMNWVRQAPGKGLEWVSTISGMGGSTYYADSVKGRFTISRDNSKNTLYLQMNSLRAEDTAVYYCAKRGYPHSFDIWGQGTMVTVVQLVESGGGLVQPGGSLRLSCAASGFTSSSYAMNWVRQAPGKGLEWVSTISGMGGSTYYADSVKGRFTISRDNSKNTLYLQMNSLRAEDTAVYYCAKRGYPHSFDIWGQGTMVTVQVQLVESGGGVVQPGRSLRLSCAASGFTFNNYGMHWVRQAPGMGLEWVAVIWHDGSDKYYADSVKGRFTISRDNSKNTLYLQMNSLRAEDTAVYYCARNWNLFDYWGQGTLVTVSIQMTQSPSSLSASVGDRITITCRASQSISTYLHWYQQKPGKAPKLLIYAASTLQSGVPSRFSGSGSGTDFTLTISSLQPEDFATYYCQQSFSTPPINFGQGTKLEIKDIQMTQSPSSLSASVGDRVTITCRASQSISSFLNWYQQKPGKAPKLLIYAASSLQSGVPSRFSGSGSGTDFTLTISSLQPEDFATYYCQQSYSTLTFGQGTVQLVESGGGLVQPGGSLRLSCAASGFTSSSYAMNWVRQAPGKGLEWVSTISGMGGSTYYADSVKGRFTISRDNSKNTLYLQMNSLRAEDTAVYYCAKRGYPHSFDIWGQGTMVTVIVNAQPKCNPNLHYWTTQDEGAAIGLAWIPYFGPAAEGIYTEGLMHNQDGLICGLRQLANETTQALQLFLRATTELRTFSILNRKAIDFLLQRWGGTCHILGPDCCIEPHAQPKCNPNLHYWTTQDEGAAIGLAWIPYFGPAAEGIYTEGLMHNQDGLICGLRQLANETTQALQLFLRATTELRTFSILNRKAIDFLLQRWGGTCHILGPDCCIEPHQVQLVESGGGVVQPGRSLRLSCAASGFTFNNYGMHWVRQAPGMGLEWVAVIWHDGSDKYYADSVKGRFTISRDNSKNTLYLQMNSLRAEDTAVYYCARNWNLFDYWGQGTLVTIQMTQSPSSTCRASQSISTYLHWYQQKPGKAPKLLIYAASTLQSGVPSRFSGSGSGTDFTLTISSLQPEDFATYYCQQSFSTPPINFGQGTKLEIEVQLVESGGGLVQPGGSLRLSCAASGFTFSSYDMHWVRQATGKGLEWVSAIGTAGDTYYPGSVKGRFTISRENAKNSLYLQMNSLRAGDTAVYYCARTWFGELYFDYWGQGTLVTVEVQLVESGGGLVQPGGSLRLSCAASGFTFSSYDMHWVRQATGKGLEWVSAIGTAGDTYYPGSVKGRFTISRENAKNSLYLQMNSLRAGDTAVYYCARTWFGELYFDYWGQGTLVTVDIVMTQSPDSLAVSLGERATINCKSSQSVLYSSNNKNYLAWYQQKPGQPPKLLIYWASTRESGVPDRFSGSGSGTEFTLTITSLQAEDVAVYYCQQYYSSPLTFGGGTKVEIKDIVMTQSPDSLAVSLGERATINCKSSQSVLYSSNNKNYLAWYQQKPGQPPKLLIYWASTRESGVPDRFSGSGSGTEFTLTITSLQAEDVAVYYCQQYYSSPLTFGGGTKVEIK\n",
             "Fold tree:\n",
-            "FOLD_TREE  EDGE 1 269 -1  EDGE 1 270 1  EDGE 1 271 2  EDGE 1 272 3  EDGE 1 273 4  EDGE 273 382 -1  EDGE 1 383 5  EDGE 383 497 -1  EDGE 1 498 6  EDGE 498 604 -1 \n"
+            "FOLD_TREE  EDGE 1 116 -1  EDGE 1 117 1  EDGE 117 385 -1  EDGE 1 386 2  EDGE 386 622 -1  EDGE 1 623 3  EDGE 623 891 -1  EDGE 1 892 4  EDGE 892 996 -1  EDGE 1 997 5  EDGE 997 1099 -1  EDGE 1 1100 6  EDGE 1100 1212 -1  EDGE 1 1213 7  EDGE 1213 1322 -1  EDGE 1 1323 8  EDGE 1323 1438 -1  EDGE 1 1439 9  EDGE 1439 1553 -1  EDGE 1 1554 10  EDGE 1554 1668 -1  EDGE 1 1669 11  EDGE 1669 1775 -1  EDGE 1 1776 12  EDGE 1776 1876 -1  EDGE 1 1877 13  EDGE 1877 1991 -1  EDGE 1 1992 14  EDGE 1992 2101 -1  EDGE 1 2102 15  EDGE 2102 2208 -1  EDGE 1 2209 16  EDGE 2209 2321 -1  EDGE 1 2322 17  EDGE 2322 2416 -1  EDGE 1 2417 18  EDGE 2417 2532 -1  EDGE 1 2533 19  EDGE 2533 2648 -1  EDGE 1 2649 20  EDGE 2649 2761 -1  EDGE 1 2762 21  EDGE 2762 2874 -1 \n"
           ]
         }
       ],
       "source": [
         "from pyrosetta import *\n",
         "init()\n",
-        "pose = pose_from_pdb(\"zaire_atoltivimab.pdb\")\n",
+        "pose = pose_from_pdb(\"7TN9.clean.pdb\")\n",
         "testPose = Pose()\n",
         "testPose.assign(pose)\n",
         "print(testPose)"
@@ -279,13 +342,13 @@
     },
     {
       "cell_type": "code",
-      "execution_count": 7,
+      "execution_count": null,
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/"
         },
         "id": "Fajoeayb8Rv7",
-        "outputId": "1faa73f9-8139-4272-c251-c3941b912f68"
+        "outputId": "ef86feea-f0d0-4b15-cfe5-ae69b185cc11"
       },
       "outputs": [
         {
@@ -319,251 +382,14 @@
             "protocols.relax.RelaxScriptManager: accept_to_best\n",
             "protocols.relax.RelaxScriptManager: endrepeat\n",
             "core.scoring.ScoreFunctionFactory: SCOREFUNCTION: ref2015\n",
-            "<pyrosetta.rosetta.protocols.relax.FastRelax object at 0x7defe9902070>\n",
-            "protocols.relax.FastRelax: CMD: repeat  4355.81  0  0  0.55\n",
-            "protocols.relax.FastRelax: CMD: coord_cst_weight  4355.81  0  0  0.55\n",
-            "protocols.relax.FastRelax: CMD: scale:fa_rep  284.245  0  0  0.022\n",
+            "<pyrosetta.rosetta.protocols.relax.FastRelax object at 0x7a87cf946a30>\n",
+            "protocols.relax.FastRelax: CMD: repeat  6637.74  0  0  0.55\n",
+            "protocols.relax.FastRelax: CMD: coord_cst_weight  6637.74  0  0  0.55\n",
+            "protocols.relax.FastRelax: CMD: scale:fa_rep  164.61  0  0  0.022\n",
             "core.pack.task: Packer task: initialize from command line()\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.pack_rotamers: built 20606 rotamers at 604 positions.\n",
-            "core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph\n",
-            "protocols.relax.FastRelax: CMD: repack  -1050.39  0  0  0.022\n",
-            "protocols.relax.FastRelax: CMD: scale:fa_rep  -1002.66  0  0  0.02805\n",
-            "core.optimization.Minimizer: [ WARNING ] LBFGS MAX CYCLES 2000 EXCEEDED, BUT FUNC NOT CONVERGED!\n",
-            "protocols.relax.FastRelax: CMD: min  -2248.07  1.77624  1.77624  0.02805\n",
-            "protocols.relax.FastRelax: CMD: coord_cst_weight  -2248.07  1.77624  1.77624  0.02805\n",
-            "protocols.relax.FastRelax: CMD: scale:fa_rep  -1016.47  1.77624  1.77624  0.14575\n",
-            "core.pack.task: Packer task: initialize from command line()\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.pack_rotamers: built 19460 rotamers at 604 positions.\n",
-            "core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph\n",
-            "protocols.relax.FastRelax: CMD: repack  -1143.13  1.77624  1.77624  0.14575\n",
-            "protocols.relax.FastRelax: CMD: scale:fa_rep  -1069.1  1.77624  1.77624  0.154\n",
-            "protocols.relax.FastRelax: CMD: min  -1824.53  1.63463  1.63463  0.154\n",
-            "protocols.relax.FastRelax: CMD: coord_cst_weight  -1824.53  1.63463  1.63463  0.154\n",
-            "protocols.relax.FastRelax: CMD: scale:fa_rep  -1470.83  1.63463  1.63463  0.30745\n",
-            "core.pack.task: Packer task: initialize from command line()\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.pack_rotamers: built 17487 rotamers at 604 positions.\n",
-            "core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph\n",
-            "protocols.relax.FastRelax: CMD: repack  -1477.31  1.63463  1.63463  0.30745\n",
-            "protocols.relax.FastRelax: CMD: scale:fa_rep  -1449.59  1.63463  1.63463  0.31955\n",
-            "protocols.relax.FastRelax: CMD: min  -1556.88  1.71109  1.71109  0.31955\n",
-            "protocols.relax.FastRelax: CMD: coord_cst_weight  -1556.88  1.71109  1.71109  0.31955\n",
-            "protocols.relax.FastRelax: CMD: scale:fa_rep  -1248.35  1.71109  1.71109  0.55\n",
-            "core.pack.task: Packer task: initialize from command line()\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.pack_rotamers: built 16714 rotamers at 604 positions.\n",
-            "core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph\n",
-            "protocols.relax.FastRelax: CMD: repack  -1242.6  1.71109  1.71109  0.55\n",
-            "protocols.relax.FastRelax: CMD: min  -1363.31  2.01768  2.01768  0.55\n",
-            "protocols.relax.FastRelax: MRP: 0  -1363.31  -1363.31  2.01768  2.01768\n",
-            "protocols.relax.FastRelax: CMD: accept_to_best  -1363.31  2.01768  2.01768  0.55\n",
-            "protocols.relax.FastRelax: CMD: endrepeat  -1363.31  2.01768  2.01768  0.55\n",
-            "protocols.relax.FastRelax: CMD: coord_cst_weight  -1363.31  2.01768  2.01768  0.55\n",
-            "protocols.relax.FastRelax: CMD: scale:fa_rep  -1804.23  2.01768  2.01768  0.022\n",
-            "core.pack.task: Packer task: initialize from command line()\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.pack_rotamers: built 19876 rotamers at 604 positions.\n",
-            "core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph\n",
-            "protocols.relax.FastRelax: CMD: repack  -1856.76  2.01768  2.01768  0.022\n",
-            "protocols.relax.FastRelax: CMD: scale:fa_rep  -1844.6  2.01768  2.01768  0.02805\n",
-            "protocols.relax.FastRelax: CMD: min  -2417.15  2.36008  2.36008  0.02805\n",
-            "protocols.relax.FastRelax: CMD: coord_cst_weight  -2417.15  2.36008  2.36008  0.02805\n",
-            "protocols.relax.FastRelax: CMD: scale:fa_rep  -1217.11  2.36008  2.36008  0.14575\n",
-            "core.pack.task: Packer task: initialize from command line()\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.pack_rotamers: built 19174 rotamers at 604 positions.\n",
-            "core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph\n",
-            "protocols.relax.FastRelax: CMD: repack  -1285.42  2.36008  2.36008  0.14575\n",
-            "protocols.relax.FastRelax: CMD: scale:fa_rep  -1210.54  2.36008  2.36008  0.154\n",
-            "protocols.relax.FastRelax: CMD: min  -1900.5  2.08937  2.08937  0.154\n",
-            "protocols.relax.FastRelax: CMD: coord_cst_weight  -1900.5  2.08937  2.08937  0.154\n",
-            "protocols.relax.FastRelax: CMD: scale:fa_rep  -1546.67  2.08937  2.08937  0.30745\n",
-            "core.pack.task: Packer task: initialize from command line()\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.pack_rotamers: built 17432 rotamers at 604 positions.\n",
-            "core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph\n",
-            "protocols.relax.FastRelax: CMD: repack  -1549.9  2.08937  2.08937  0.30745\n",
-            "protocols.relax.FastRelax: CMD: scale:fa_rep  -1522.18  2.08937  2.08937  0.31955\n",
-            "protocols.relax.FastRelax: CMD: min  -1643.52  2.13391  2.13391  0.31955\n",
-            "protocols.relax.FastRelax: CMD: coord_cst_weight  -1643.52  2.13391  2.13391  0.31955\n",
-            "protocols.relax.FastRelax: CMD: scale:fa_rep  -1348.26  2.13391  2.13391  0.55\n",
-            "core.pack.task: Packer task: initialize from command line()\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.pack_rotamers: built 16951 rotamers at 604 positions.\n",
-            "core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph\n",
-            "protocols.relax.FastRelax: CMD: repack  -1349.1  2.13391  2.13391  0.55\n",
-            "protocols.relax.FastRelax: CMD: min  -1417.7  2.24078  2.24078  0.55\n",
-            "protocols.relax.FastRelax: MRP: 1  -1417.7  -1417.7  2.24078  2.24078\n",
-            "protocols.relax.FastRelax: CMD: accept_to_best  -1417.7  2.24078  2.24078  0.55\n",
-            "protocols.relax.FastRelax: CMD: endrepeat  -1417.7  2.24078  2.24078  0.55\n",
-            "protocols.relax.FastRelax: CMD: coord_cst_weight  -1417.7  2.24078  2.24078  0.55\n",
-            "protocols.relax.FastRelax: CMD: scale:fa_rep  -1869.66  2.24078  2.24078  0.022\n",
-            "core.pack.task: Packer task: initialize from command line()\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.pack_rotamers: built 19551 rotamers at 604 positions.\n",
-            "core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph\n",
-            "protocols.relax.FastRelax: CMD: repack  -1917.59  2.24078  2.24078  0.022\n",
-            "protocols.relax.FastRelax: CMD: scale:fa_rep  -1905.04  2.24078  2.24078  0.02805\n",
-            "protocols.relax.FastRelax: CMD: min  -2455.32  2.46838  2.46838  0.02805\n",
-            "protocols.relax.FastRelax: CMD: coord_cst_weight  -2455.32  2.46838  2.46838  0.02805\n",
-            "protocols.relax.FastRelax: CMD: scale:fa_rep  -1292.58  2.46838  2.46838  0.14575\n",
-            "core.pack.task: Packer task: initialize from command line()\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.pack_rotamers: built 19446 rotamers at 604 positions.\n",
-            "core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph\n",
-            "protocols.relax.FastRelax: CMD: repack  -1349.48  2.46838  2.46838  0.14575\n",
-            "protocols.relax.FastRelax: CMD: scale:fa_rep  -1276.57  2.46838  2.46838  0.154\n",
-            "protocols.relax.FastRelax: CMD: min  -1928.66  2.18675  2.18675  0.154\n",
-            "protocols.relax.FastRelax: CMD: coord_cst_weight  -1928.66  2.18675  2.18675  0.154\n",
-            "protocols.relax.FastRelax: CMD: scale:fa_rep  -1569.69  2.18675  2.18675  0.30745\n",
-            "core.pack.task: Packer task: initialize from command line()\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.pack_rotamers: built 17711 rotamers at 604 positions.\n",
-            "core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph\n",
-            "protocols.relax.FastRelax: CMD: repack  -1571.19  2.18675  2.18675  0.30745\n",
-            "protocols.relax.FastRelax: CMD: scale:fa_rep  -1543.2  2.18675  2.18675  0.31955\n",
-            "protocols.relax.FastRelax: CMD: min  -1661.07  2.2525  2.2525  0.31955\n",
-            "protocols.relax.FastRelax: CMD: coord_cst_weight  -1661.07  2.2525  2.2525  0.31955\n",
-            "protocols.relax.FastRelax: CMD: scale:fa_rep  -1364.59  2.2525  2.2525  0.55\n",
-            "core.pack.task: Packer task: initialize from command line()\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.pack_rotamers: built 16926 rotamers at 604 positions.\n",
-            "core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph\n",
-            "protocols.relax.FastRelax: CMD: repack  -1365.27  2.2525  2.2525  0.55\n",
-            "protocols.relax.FastRelax: CMD: min  -1433.2  2.37169  2.37169  0.55\n",
-            "protocols.relax.FastRelax: MRP: 2  -1433.2  -1433.2  2.37169  2.37169\n",
-            "protocols.relax.FastRelax: CMD: accept_to_best  -1433.2  2.37169  2.37169  0.55\n",
-            "protocols.relax.FastRelax: CMD: endrepeat  -1433.2  2.37169  2.37169  0.55\n",
-            "protocols.relax.FastRelax: CMD: coord_cst_weight  -1433.2  2.37169  2.37169  0.55\n",
-            "protocols.relax.FastRelax: CMD: scale:fa_rep  -1884.86  2.37169  2.37169  0.022\n",
-            "core.pack.task: Packer task: initialize from command line()\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.pack_rotamers: built 19510 rotamers at 604 positions.\n",
-            "core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph\n",
-            "protocols.relax.FastRelax: CMD: repack  -1941.74  2.37169  2.37169  0.022\n",
-            "protocols.relax.FastRelax: CMD: scale:fa_rep  -1929.73  2.37169  2.37169  0.02805\n",
-            "protocols.relax.FastRelax: CMD: min  -2467.71  2.36989  2.36989  0.02805\n",
-            "protocols.relax.FastRelax: CMD: coord_cst_weight  -2467.71  2.36989  2.36989  0.02805\n",
-            "protocols.relax.FastRelax: CMD: scale:fa_rep  -1313.92  2.36989  2.36989  0.14575\n",
-            "core.pack.task: Packer task: initialize from command line()\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.pack_rotamers: built 19376 rotamers at 604 positions.\n",
-            "core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph\n",
-            "protocols.relax.FastRelax: CMD: repack  -1371.88  2.36989  2.36989  0.14575\n",
-            "protocols.relax.FastRelax: CMD: scale:fa_rep  -1300.09  2.36989  2.36989  0.154\n",
-            "protocols.relax.FastRelax: CMD: min  -1940.04  2.18599  2.18599  0.154\n",
-            "protocols.relax.FastRelax: CMD: coord_cst_weight  -1940.04  2.18599  2.18599  0.154\n",
-            "protocols.relax.FastRelax: CMD: scale:fa_rep  -1586.51  2.18599  2.18599  0.30745\n",
-            "core.pack.task: Packer task: initialize from command line()\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.pack_rotamers: built 17465 rotamers at 604 positions.\n",
-            "core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph\n",
-            "protocols.relax.FastRelax: CMD: repack  -1585.44  2.18599  2.18599  0.30745\n",
-            "protocols.relax.FastRelax: CMD: scale:fa_rep  -1557.73  2.18599  2.18599  0.31955\n",
-            "protocols.relax.FastRelax: CMD: min  -1667.25  2.20559  2.20559  0.31955\n",
-            "protocols.relax.FastRelax: CMD: coord_cst_weight  -1667.25  2.20559  2.20559  0.31955\n",
-            "protocols.relax.FastRelax: CMD: scale:fa_rep  -1367.53  2.20559  2.20559  0.55\n",
-            "core.pack.task: Packer task: initialize from command line()\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.pack_rotamers: built 16872 rotamers at 604 positions.\n",
-            "core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph\n",
-            "protocols.relax.FastRelax: CMD: repack  -1368.61  2.20559  2.20559  0.55\n",
-            "protocols.relax.FastRelax: CMD: min  -1436.44  2.29458  2.29458  0.55\n",
-            "protocols.relax.FastRelax: MRP: 3  -1436.44  -1436.44  2.29458  2.29458\n",
-            "protocols.relax.FastRelax: CMD: accept_to_best  -1436.44  2.29458  2.29458  0.55\n",
-            "protocols.relax.FastRelax: CMD: endrepeat  -1436.44  2.29458  2.29458  0.55\n",
-            "protocols.relax.FastRelax: CMD: coord_cst_weight  -1436.44  2.29458  2.29458  0.55\n",
-            "protocols.relax.FastRelax: CMD: scale:fa_rep  -1895.52  2.29458  2.29458  0.022\n",
-            "core.pack.task: Packer task: initialize from command line()\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.pack_rotamers: built 19784 rotamers at 604 positions.\n",
-            "core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph\n",
-            "protocols.relax.FastRelax: CMD: repack  -1944.88  2.29458  2.29458  0.022\n",
-            "protocols.relax.FastRelax: CMD: scale:fa_rep  -1930  2.29458  2.29458  0.02805\n",
-            "protocols.relax.FastRelax: CMD: min  -2463.78  2.39726  2.39726  0.02805\n",
-            "protocols.relax.FastRelax: CMD: coord_cst_weight  -2463.78  2.39726  2.39726  0.02805\n",
-            "protocols.relax.FastRelax: CMD: scale:fa_rep  -1346.65  2.39726  2.39726  0.14575\n",
-            "core.pack.task: Packer task: initialize from command line()\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.pack_rotamers: built 19120 rotamers at 604 positions.\n",
-            "core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph\n",
-            "protocols.relax.FastRelax: CMD: repack  -1409.15  2.39726  2.39726  0.14575\n",
-            "protocols.relax.FastRelax: CMD: scale:fa_rep  -1340.1  2.39726  2.39726  0.154\n",
-            "protocols.relax.FastRelax: CMD: min  -1946.83  2.19078  2.19078  0.154\n",
-            "protocols.relax.FastRelax: CMD: coord_cst_weight  -1946.83  2.19078  2.19078  0.154\n",
-            "protocols.relax.FastRelax: CMD: scale:fa_rep  -1596.89  2.19078  2.19078  0.30745\n",
-            "core.pack.task: Packer task: initialize from command line()\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.pack_rotamers: built 17663 rotamers at 604 positions.\n",
-            "core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph\n",
-            "protocols.relax.FastRelax: CMD: repack  -1598.98  2.19078  2.19078  0.30745\n",
-            "protocols.relax.FastRelax: CMD: scale:fa_rep  -1571.58  2.19078  2.19078  0.31955\n",
-            "protocols.relax.FastRelax: CMD: min  -1679.47  2.20987  2.20987  0.31955\n",
-            "protocols.relax.FastRelax: CMD: coord_cst_weight  -1679.47  2.20987  2.20987  0.31955\n",
-            "protocols.relax.FastRelax: CMD: scale:fa_rep  -1380.51  2.20987  2.20987  0.55\n",
-            "core.pack.task: Packer task: initialize from command line()\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.rotamer_set.RotamerSet_: Using simple Rotamer generation logic for pdb_NAG\n",
-            "core.pack.pack_rotamers: built 16885 rotamers at 604 positions.\n",
-            "core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph\n",
-            "protocols.relax.FastRelax: CMD: repack  -1380.98  2.20987  2.20987  0.55\n",
-            "protocols.relax.FastRelax: CMD: min  -1443.14  2.32343  2.32343  0.55\n",
-            "protocols.relax.FastRelax: MRP: 4  -1443.14  -1443.14  2.32343  2.32343\n",
-            "protocols.relax.FastRelax: CMD: accept_to_best  -1443.14  2.32343  2.32343  0.55\n",
-            "protocols.relax.FastRelax: CMD: endrepeat  -1443.14  2.32343  2.32343  0.55\n",
-            "protocols::checkpoint: Deleting checkpoints of FastRelax\n"
+            "core.pack.pack_rotamers: built 116413 rotamers at 2874 positions.\n",
+            "core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph\n"
           ]
-        },
-        {
-          "output_type": "execute_result",
-          "data": {
-            "text/plain": [
-              "True"
-            ]
-          },
-          "metadata": {},
-          "execution_count": 7
         }
       ],
       "source": [
@@ -854,7 +680,7 @@
     {
       "cell_type": "markdown",
       "metadata": {
-        "id": "tHeE4YLotRAa"
+        "id": "NFuW8gRuxHL2"
       },
       "source": [
         "# Setp 4a.  Exploration.\n",
@@ -868,8 +694,8 @@
       "cell_type": "code",
       "execution_count": null,
       "metadata": {
-        "id": "lPMYJYPJtRAa",
-        "outputId": "77257ea7-0b1a-454b-ec9a-950290434b95"
+        "id": "ARDd3XFRxHL2",
+        "outputId": "2dd460f0-a4b3-442c-fb0e-c9488d15a641"
       },
       "outputs": [
         {
@@ -891,7 +717,7 @@
     {
       "cell_type": "markdown",
       "metadata": {
-        "id": "aNhr4x6ztRAa"
+        "id": "IcmqqIMSxHL2"
       },
       "source": [
         "Now lets get some information fromt the ResidueType object that holds chemical information.\n"
@@ -901,8 +727,8 @@
       "cell_type": "code",
       "execution_count": null,
       "metadata": {
-        "id": "fiM6GrbDtRAa",
-        "outputId": "701fd9df-4e9e-43b1-b551-82d375f8abab"
+        "id": "4U1tNxWYxHL2",
+        "outputId": "e873d1f5-6a10-4025-f8ec-392e1b48155b"
       },
       "outputs": [
         {
@@ -927,7 +753,7 @@
     {
       "cell_type": "markdown",
       "metadata": {
-        "id": "Cu6YZSodtRAa"
+        "id": "EDCDVCa7xHL2"
       },
       "source": [
         "Finally, lets get the residue from the type"
@@ -937,8 +763,8 @@
       "cell_type": "code",
       "execution_count": null,
       "metadata": {
-        "id": "xNOc670QtRAa",
-        "outputId": "1b5d9bd0-0e5d-4b13-fc79-1f6eb36711a1"
+        "id": "iF_3m7HDxHL2",
+        "outputId": "c03b82bd-b700-44ae-e551-03eb5d18f9ec"
       },
       "outputs": [
         {
@@ -5983,8 +5809,7 @@
   "metadata": {
     "colab": {
       "name": "06.08-Point-Mutation-Scan.ipynb",
-      "provenance": [],
-      "include_colab_link": true
+      "provenance": []
     },
     "kernelspec": {
       "display_name": "Python 3",
