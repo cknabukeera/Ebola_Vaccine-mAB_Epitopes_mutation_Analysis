@@ -59,6 +59,8 @@ save 7TN9_REGN3479.pdb, REGN3479_obj
 python3 ../ddg_calcV3.py -p "$PDB" -r 504 -c T -m T --relax_rounds 5 -o result_I504T_subset.csv
 python3 ../ddg_calcV3.py -p "$PDB" -r 505 -c T -m L --relax_rounds 5 -o result_V505L_subset.csv
 python3 ../ddg_calcV3.py -p "$PDB" -r 507 -c T -m S --relax_rounds 5 -o result_N507S_subset.csv
+```
+
 python3 ../ddg_calcV3.py -p "$PDB" -r 507 -c T -m R --relax_rounds 5 -o result_N507R_subset.csv
 
 ```
