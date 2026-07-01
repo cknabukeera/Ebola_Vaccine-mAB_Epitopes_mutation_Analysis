@@ -56,17 +56,17 @@ load 7TN9_clean.pdb
 # --- GP full (GP1 + GP2) ---
 select GP1, chain S+T+U
 select GP2, chain V+W+X
-select GP_full, GP1 or GP2
+select GP, GP1 or GP2
 
 # --- REGN3471 (heavy: A,C,E; light: B,D,F) ---
 select REGN3471, chain A+B+C+D+E+F
-select GP_REGN3471, GP_full or REGN3471
-extract obj_REGN3471, GP_REGN3471
+select GP_REGN3471, GP or REGN3471 # combine both
+extract obj_REGN3471, GP_REGN3471 
 save 7TN9_GP_REGN3471.pdb, obj_REGN3471
 
 # --- REGN3470 (heavy: G,I; light: H,J) ---
 select REGN3470, chain G+H+I+J
-select GP_REGN3470, GP_full or REGN3470
+select GP_REGN3470, GP or REGN3470
 extract obj_REGN3470, GP_REGN3470
 save 7TN9_GP_REGN3470.pdb, obj_REGN3470
 ```
