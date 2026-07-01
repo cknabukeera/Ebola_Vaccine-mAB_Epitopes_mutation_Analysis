@@ -69,15 +69,4 @@ select REGN3470, chain G+H+I+J
 select GP_REGN3470, GP_full or REGN3470
 extract obj_REGN3470, GP_REGN3470
 save 7TN9_GP_REGN3470.pdb, obj_REGN3470
-
-# --- (Optional) REGN3479 already done ---
-# If you need it again:
-# select REGN3479, chain M+N+O+P+Q+R
-# select GP_REGN3479, GP_full or REGN3479
-# extract obj_REGN3479, GP_REGN3479
-# save 7TN9_GP_REGN3479.pdb, obj_REGN3479
-
-# --- Optional: GP only ---
-extract obj_GP, GP_full
-save 7TN9_GP_only.pdb, obj_GP
 ```
