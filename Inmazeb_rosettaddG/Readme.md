@@ -33,7 +33,8 @@ save 7TN9_GP_REGN3479_with_GP2.pdb, complex_obj
 
 
 ### 2. In silico mutagenesis(introducing BDBV mutations in Zaire) and ddG energy claculations with pyrosetta
- #### ddG script
+Here, we introduce BDBV epitope mutations into Zaire GP antibody complexes to access the impact on the binding energy (The cost on the energy, if the antibody is to bind the BDBV which comprises these mutations in its epitope.
+
 ```
 #ddg calculation script
 ./ddg_calcV3.py 
