@@ -62,6 +62,7 @@ Here, we introduce BDBV epitope mutations into Zaire GP antibody complexes to ac
 ./ddg_calcV3.py 
 ````
 ### Performing individual antibogy_GP complex mutation introduction and binding energy calculations in the mutant Vs wildType
+#### GP_REGN3479
 ```
 PDB="/path_to_file/7TN9_GP_REGN3479_with_GP2.pdb"
 # Run mutations on the GP (chain T) in the GP_REGN3479 complex
@@ -71,4 +72,7 @@ python3 ../ddg_calcV3.py -p "$PDB" -r 505 -c V -m L --relax_rounds 5 -o result_V
 python3 ../ddg_calcV3.py -p "$PDB" -r 507 -c V -m S --relax_rounds 5 -o result_N507S_subset.csv
 python3 ../ddg_calcV3.py -p "$PDB" -r 507 -c V -m R --relax_rounds 5 -o result_N507R_subset.csv
 ```
+#### GP_REGN3470
+#### GP_REGN3471
+#### ddG Binding energy Results
 
