@@ -2,7 +2,8 @@
 
 Since this is a complex of three antibodies, I need to extract the individual GP proteins and its corresponding antibody, to have the GP interacting individually with each antibody
 
-### 1. Using PyMOL to extract the GP_REGN3479 chains
+### 1. Using PyMOL to extract the Individual antibody chains and combine them with the Zaire GP
+#### GP_REGN3479 chains 
 
 ```
 # Load the cleaned PDB
@@ -31,6 +32,23 @@ extract complex_obj, GP_REGN3479_full
 save 7TN9_GP_REGN3479_with_GP2.pdb, complex_obj
 ```
 
+### GP_REGN3470 and GP_REGN3471
+```# Load your cleaned PDB
+load 7TN9_clean.pdb
+
+# --- GP full (GP1 + GP2) ---
+select GP1, chain S+T+U
+select GP2, chain V+W+X
+select GP, GP1 or GP2
+
+# --- REGN3471 (heavy: A,C,E; light: B,D,F) ---
+select REGN3471, chain A+B+C+D+E+F
+select GP_REGN3471, GP or REGN3471 # combine both
+extract obj_REGN3471, GP_REGN3471 
+save 7TN9_GP_REGN3471.pdb, obj_REGN3471
+
+# --- REGN3470 (heavy: G,I; light: H,J) ---
+select REGN3470, chain G+H+I+J
 
 ### 2. In silico mutagenesis(introducing BDBV mutations in Zaire) and ddG energy claculations with pyrosetta
 Here, we introduce BDBV epitope mutations into Zaire GP antibody complexes to access the impact on the binding energy (The cost on the energy, if the antibody is to bind the BDBV which comprises these mutations in its epitope.
@@ -50,23 +68,7 @@ python3 ../ddg_calcV3.py -p "$PDB" -r 507 -c V -m S --relax_rounds 5 -o result_N
 python3 ../ddg_calcV3.py -p "$PDB" -r 507 -c V -m R --relax_rounds 5 -o result_N507R_subset.csv
 ```
 
-### GP_REGN3470 and GP_REGN3471
-```# Load your cleaned PDB
-load 7TN9_clean.pdb
 
-# --- GP full (GP1 + GP2) ---
-select GP1, chain S+T+U
-select GP2, chain V+W+X
-select GP, GP1 or GP2
-
-# --- REGN3471 (heavy: A,C,E; light: B,D,F) ---
-select REGN3471, chain A+B+C+D+E+F
-select GP_REGN3471, GP or REGN3471 # combine both
-extract obj_REGN3471, GP_REGN3471 
-save 7TN9_GP_REGN3471.pdb, obj_REGN3471
-
-# --- REGN3470 (heavy: G,I; light: H,J) ---
-select REGN3470, chain G+H+I+J
 select GP_REGN3470, GP or REGN3470
 extract obj_REGN3470, GP_REGN3470
 save 7TN9_GP_REGN3470.pdb, obj_REGN3470
