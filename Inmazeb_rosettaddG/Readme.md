@@ -256,3 +256,19 @@ python3 ddg_calcV3_full.py -p "$PDB" -r 265 -c T -m R --relax_rounds 5 -o result
 python3 ddg_calcV3_full.py -p "$PDB" -r 504 -c V -m T --relax_rounds 5 -o result_I504T_full.csv
 python3 ddg_calcV3_full.py -p "$PDB" -r 505 -c V -m L --relax_rounds 5 -o result_V505L_full.csv
 python3 ddg_calcV3_full.py -p "$PDB" -r 507 -c V -m T --relax_rounds 5 -o result_N507T_full.csv
+
+```
+PDB="/path/to/7TN9_full_complex.pdb"
+
+# GP1 mutations (chain T) - 35 trajectories each
+python3 ddg_calcV3_full_with_errors.py -p "$PDB" -r 112 -c T -m D --n_trajectories 35 --run_controls -o result_E112D_full_35traj.csv --output_controls controls_E112D_full.csv
+python3 ddg_calcV3_full_with_errors.py -p "$PDB" -r 116 -c T -m A --n_trajectories 35 --run_controls -o result_P116A_full_35traj.csv --output_controls controls_P116A_full.csv
+python3 ddg_calcV3_full_with_errors.py -p "$PDB" -r 263 -c T -m N --n_trajectories 35 --run_controls -o result_S263N_full_35traj.csv --output_controls controls_S263N_full.csv
+python3 ddg_calcV3_full_with_errors.py -p "$PDB" -r 265 -c T -m R --n_trajectories 35 --run_controls -o result_K265R_full_35traj.csv --output_controls controls_K265R_full.csv
+```
+# GP2 mutations (chain V) - 35 trajectories each
+```
+python3 ddg_calcV3_full_with_errors.py -p "$PDB" -r 504 -c V -m T --n_trajectories 35 --run_controls -o result_I504T_full_35traj.csv --output_controls controls_I504T_full.csv
+python3 ddg_calcV3_full_with_errors.py -p "$PDB" -r 505 -c V -m L --n_trajectories 35 --run_controls -o result_V505L_full_35traj.csv --output_controls controls_V505L_full.csv
+python3 ddg_calcV3_full_with_errors.py -p "$PDB" -r 507 -c V -m T --n_trajectories 35 --run_controls -o result_N507T_full_35traj.csv --output_controls controls_N507T_full.csv
+```
