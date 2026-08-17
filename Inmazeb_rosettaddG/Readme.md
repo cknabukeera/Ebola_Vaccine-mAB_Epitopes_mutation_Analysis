@@ -75,6 +75,10 @@ These results will inform whether Inmazeb or its individual components could be 
 - SLURM HPC cluster (optional, for high-throughput calculations)
 
 ---
+### Download/Retrieve the 7TN9 inmazeb trimeric complexed with Zaire GP
+
+```wget https://files.rcsb.org/download/7TN9.pdb
+```
 
 ### Cleaning the 7TN9 PDB file 
  - First, we need to clean the PDB file to remove the water molecules, ligands and non protein atoms
