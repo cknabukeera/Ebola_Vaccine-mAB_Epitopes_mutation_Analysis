@@ -204,3 +204,55 @@ sbatch GP_REGN3471_seed.sh
 ```
 #### ddG Binding energy Results
 
+## Full 7TN9 Complex Analysis (All mAbs Together)
+
+### Background
+
+While analyzing individual antibody-GP complexes provides valuable per-mAb binding information, the **full 7TN9 complex** (containing all three mAbs - REGN3470, REGN3471, and REGN3479 - bound to GP simultaneously) offers insights into:
+
+1. **Crosstalk between antibodies**: How mutations affect binding when all mAbs are present
+2. **Cooperativity**: Whether antibodies bind independently or cooperatively
+3. **Overall complex stability**: The cumulative effect of BDBV mutations on the entire Inmazeb-GP complex
+
+### Structure Overview
+
+The full 7TN9 complex contains:
+- **GP**: chains S, T, U, V, W, X (GP1 + GP2 trimer)
+- **REGN3470**: chains G, H, I, J (heavy: G,I; light: H,J)
+- **REGN3471**: chains A, B, C, D, E, F (heavy: A,C,E; light: B,D,F)
+- **REGN3479**: chains M, N, O, P, Q, R (heavy: M,O,Q; light: N,P,R)
+
+**Total**: ~3000+ residues
+
+### Mutations Analyzed
+
+#### GP1 Mutations (chain T)
+| Residue | Wild Type | Mutant | Mutation Type |
+|---------|-----------|--------|---------------|
+| 112 | E (Glutamic Acid) | D (Aspartic Acid) | Conservative |
+| 116 | P (Proline) | A (Alanine) | Conservative |
+| 263 | S (Serine) | N (Asparagine) | Conservative |
+| 265 | K (Lysine) | R (Arginine) | Conservative |
+
+#### GP2 Mutations (chain V)
+| Residue | Wild Type | Mutant | Mutation Type |
+|---------|-----------|--------|---------------|
+| 504 | I (Isoleucine) | T (Threonine) | Conservative |
+| 505 | V (Valine) | L (Leucine) | Conservative |
+| 507 | N (Asparagine) | T (Threonine) | Conservative |
+
+### Single-Trajectory Calculations (Quick Testing)
+
+```bash
+PDB="/path/to/7TN9_clean.pdb"
+
+# GP1 mutations (chain T)
+python3 ddg_calcV3_full.py -p "$PDB" -r 112 -c T -m D --relax_rounds 5 -o result_E112D_full.csv
+python3 ddg_calcV3_full.py -p "$PDB" -r 116 -c T -m A --relax_rounds 5 -o result_P116A_full.csv
+python3 ddg_calcV3_full.py -p "$PDB" -r 263 -c T -m N --relax_rounds 5 -o result_S263N_full.csv
+python3 ddg_calcV3_full.py -p "$PDB" -r 265 -c T -m R --relax_rounds 5 -o result_K265R_full.csv
+
+# GP2 mutations (chain V)
+python3 ddg_calcV3_full.py -p "$PDB" -r 504 -c V -m T --relax_rounds 5 -o result_I504T_full.csv
+python3 ddg_calcV3_full.py -p "$PDB" -r 505 -c V -m L --relax_rounds 5 -o result_V505L_full.csv
+python3 ddg_calcV3_full.py -p "$PDB" -r 507 -c V -m T --relax_rounds 5 -o result_N507T_full.csv
