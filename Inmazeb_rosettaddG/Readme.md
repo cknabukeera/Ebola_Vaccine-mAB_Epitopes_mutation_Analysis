@@ -1,7 +1,7 @@
+# Antibody-GP Complex Binding Energy Analysis
 ## Inmazeb individual component analysis
 
 Since this is a complex of three antibodies, I need to extract the individual GP proteins and its corresponding antibody, to have the GP interacting individually with each antibody
-# Antibody-GP Complex Binding Energy Analysis
 
 ## Background & Rationale
 
