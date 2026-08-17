@@ -77,6 +77,7 @@ These results will inform whether Inmazeb or its individual components could be 
 ---
 
 ### Cleaning the 7TN9 PDB file 
+ - First, we need to clean the PDB file to remove the water molecules, ligands and non protein atoms
 ```
 ## PDB Cleaning Script
 
