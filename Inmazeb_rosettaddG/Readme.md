@@ -267,7 +267,7 @@ python3 ddg_calcV3_full_with_errors.py -p "$PDB" -r 116 -c T -m A --n_trajectori
 python3 ddg_calcV3_full_with_errors.py -p "$PDB" -r 263 -c T -m N --n_trajectories 35 --run_controls -o result_S263N_full_35traj.csv --output_controls controls_S263N_full.csv
 python3 ddg_calcV3_full_with_errors.py -p "$PDB" -r 265 -c T -m R --n_trajectories 35 --run_controls -o result_K265R_full_35traj.csv --output_controls controls_K265R_full.csv
 ```
-# GP2 mutations (chain V) - 35 trajectories each
+#### GP2 mutations (chain V) - 35 trajectories each
 
 ```
 python3 ddg_calcV3_full_with_errors.py -p "$PDB" -r 504 -c V -m T --n_trajectories 35 --run_controls -o result_I504T_full_35traj.csv --output_controls controls_I504T_full.csv
