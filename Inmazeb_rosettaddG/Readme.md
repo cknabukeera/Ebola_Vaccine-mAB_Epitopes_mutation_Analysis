@@ -274,3 +274,9 @@ python3 ddg_calcV3_full_with_errors.py -p "$PDB" -r 504 -c V -m T --n_trajectori
 python3 ddg_calcV3_full_with_errors.py -p "$PDB" -r 505 -c V -m L --n_trajectories 35 --run_controls -o result_V505L_full_35traj.csv --output_controls controls_V505L_full.csv
 python3 ddg_calcV3_full_with_errors.py -p "$PDB" -r 507 -c V -m T --n_trajectories 35 --run_controls -o result_N507T_full_35traj.csv --output_controls controls_N507T_full.csv
 ```
+## Citation
+ - Rosetta/PyRosetta: Chaudhury, S., et al. (2010). PyRosetta: a script-based interface for implementing molecular modeling algorithms using Rosetta. Bioinformatics, 26(5), 689-691.
+
+ - Flex ddG Protocol: Barlow, K. A., et al. (2018). Flex ddG: Rosetta ensemble-based estimation of changes in protein-protein binding affinity upon mutation. The Journal of Physical Chemistry B, 122(21), 5389-5399.
+
+ - Inmazeb Structure: PDB 7TN9 - Cryo-EM structure of the Ebola virus glycoprotein in complex with the Inmazeb antibodies.
