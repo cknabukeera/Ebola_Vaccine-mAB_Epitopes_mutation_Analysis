@@ -504,6 +504,40 @@ def main():
 if __name__ == "__main__":
     main()
 ```
+#### Output
+```
+PyRosetta-4 2026 [Rosetta PyRosetta4.Release.python311.ubuntu 2026.25+release.a31d9d50e217e874c57db71bf169052467a8e3d8 2026-06-08T08:14:09] retrieved from: http://www.pyrosetta.org
+Loading un-glycosylated pose af3_bdbv_regn3479.pdb...
+Loading glycosylated pose af3_bdbv_regn3479_glyc_563.pdb...
+
+Auto-detected chains:
+  Target Glycoprotein (GP) Chain: A
+  Antibody (mAb) Chains: BC
+Interface definition: A_BC
+--------------------------------------------------------------------
+Analyzing un-glycosylated interface...
+  Un-glycosylated dG_separated: 606.54 REU
+
+Analyzing glycosylated interface...
+  Glycosylated dG_separated: 609.39 REU
+
+======================================================================
+                      INTERFACE ANALYZER RESULTS                      
+======================================================================
+Metric                         | Un-glycosylated  | Glycosylated    
+----------------------------------------------------------------------
+Binding Energy (dG_separated)  | 606.54           | 609.39          
+Interface Packing (packstat)   | 0.634            | 0.590           
+----------------------------------------------------------------------
+Glycan Effect (ddG_glycan)     | 2.85                              
+======================================================================
+
+Interpretation:
+  * Glycosylation at Asn563 weakens binding by +2.85 REU.
+    This indicates a STERIC HINDRANCE/SHIELDING effect on Maftivimab.
+======================================================================
+```
+
 #### Interface Analyzer Results & Structural Insights
 
 After running the automated `run_interface_analysis.py` script on both the un-glycosylated and glycosylated BDBV GP–Maftivimab (REGN3479) complexes, we obtained the following interface energetics and packing complementarity scores:
@@ -587,6 +621,16 @@ By combining these two steps, we ensure that our calculated binding energies are
 
 To model the biologically relevant state of the complex, we glycosylated the full trimeric BDBV GP in complex with all three antibodies of the Inmazeb cocktail (REGN3479, REGN3470, and REGN3471) bound simultaneously. Sourcing the full complex ensures that we account for potential steric constraints imposed by adjacent antibodies.
 
+```
+core.pack.task: Packer task: initialize from command line() 
+core.pack.pack_rotamers: built 1082 rotamers at 8 positions.
+core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph
+protocols.carbohydrates.util: pack accepted: 1
+protocols.carbohydrates.GlycanTreeModeler: Start- : 20609.6
+protocols.carbohydrates.GlycanTreeModeler: Pre  - : 7139.3
+protocols.carbohydrates.GlycanTreeModeler: Post - : 7139.68
+protocols.carbohydrates.GlycanTreeModeler: Final- : 7139.09
+````
 Below is the energy profile (REU) of the full BDBV-Inmazeb complex at each stage of the glycosylation process:
 
 | Optimization Stage | Total System Energy (REU) | Description |
@@ -600,3 +644,37 @@ Below is the energy profile (REU) of the full BDBV-Inmazeb complex at each stage
 During this run, PyRosetta's `GlycanTreeModeler` performed layer-by-layer Monte Carlo sampling:
 1. **Layer 0 & 1:** Relaxed the core GlcNAc sugars directly attached to the `Asn563` side-chain nitrogen.
 2. **Layer 2, 3, & 4:** Relaxed the outer branched mannose rings, adjusting the glycosidic torsion angles ($\phi$, $\psi$, $\omega$) to find a stable conformation that wraps around the BDBV glycoprotein base without clashing with the surrounding antibodies.
+
+#### output
+```
+PyRosetta-4 2026 [Rosetta PyRosetta4.Release.python313.ubuntu 2026.03+releasequarterly.5e498f1409c68ade56c8ce5842bf79e1b02e8db4 2026-01-13T13:24:11] retrieved from: http://www.pyrosetta.org
+Loading un-glycosylated pose af3_bdbv_inmazeb.pdb...
+Loading glycosylated pose af3_bdbv_inmazeb_glyc_563.pdb...
+
+Auto-detected chains:
+  Target Glycoprotein (GP) Chain: A
+  Antibody (mAb) Chains: EDFBCG
+Interface definition: A_EDFBCG
+--------------------------------------------------------------------
+Analyzing un-glycosylated interface...
+  Un-glycosylated dG_separated: 946.52 REU
+
+Analyzing glycosylated interface...
+  Glycosylated dG_separated: 946.06 REU
+
+======================================================================
+                      INTERFACE ANALYZER RESULTS                      
+======================================================================
+Metric                         | Un-glycosylated  | Glycosylated    
+----------------------------------------------------------------------
+Binding Energy (dG_separated)  | 946.52           | 946.06          
+Interface Packing (packstat)   | 0.721            | 0.708           
+----------------------------------------------------------------------
+Glycan Effect (ddG_glycan)     | -0.46                             
+======================================================================
+
+Interpretation:
+  * Glycosylation at Asn563 has a neutral effect (-0.46 REU).
+    The glycan is accommodated without altering the binding strength.
+======================================================================
+```
