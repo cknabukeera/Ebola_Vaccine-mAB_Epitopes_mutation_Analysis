@@ -1,1 +1,10 @@
+# Glycosylation
 
+From AF3 predictions, I generated a BDBV GP_REGN3479(Maftivimab) complex prediction
+
+#### STEP 1: Convert the cif (AF3 output) to PDB using PyMOL
+```# 
+#In PyMOL
+load fold_regn3479_bdbv_gp_model_0.cif
+save af3_bdbv_regn3479.pdb
+```
