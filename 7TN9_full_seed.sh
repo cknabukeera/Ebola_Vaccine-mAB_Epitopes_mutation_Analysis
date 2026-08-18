@@ -79,6 +79,3 @@ echo "Date: $(date)"
 echo "Results: $OUTPUT_DIR"
 echo "=========================================="
 ls -lh *.csv
-EOF
-
-chmod +x 7TN9_full_seed.sh

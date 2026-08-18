@@ -1,4 +1,3 @@
-cat > 7TN9_ddg_full_with_errors.py << 'EOF'
 #!/usr/bin/env python3
 """
 7TN9 Full Complex ddG Calculator with Error Bars
@@ -217,6 +216,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-EOF
-
-chmod +x 7TN9_ddg_full_with_errors.py
