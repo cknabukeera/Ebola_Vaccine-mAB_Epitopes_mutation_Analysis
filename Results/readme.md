@@ -1,14 +1,13 @@
 ---
-title: "Ebola Monoclonal Antibody Therapeutics vs. Bundibugyo Virus (BDBV) Glycoprotein (GP)"
----
+# Ebola Monoclonal Antibody Therapeutics vs. Bundibugyo Virus (BDBV) Glycoprotein (GP)"
 
-# Overview
+## Overview
 
 This document contains tables assessing the sequence conservation, binding affinity impact, and interface properties of clinical monoclonal antibodies (mAb114/Ebanga, Inmazeb, and MBP134) when mapped against the Bundibugyo virus (BDBV) GP sequence.
 
 ---
 
-# Table 1: Epitopes & Contact Residues
+### Table 1: Epitopes & Contact Residues
 **Glycoprotein (GP) epitopes targeted by monoclonal antibody therapeutics developed against Zaire ebolavirus (EBOV).**
 
 Listed are the GP regions and contact residues recognized by the therapeutic antibodies mAb114 (Ebanga), Inmazeb (Maftivimab, Odesivimab, Atoltivimab), and MBP134 (ADI-15878, ADI-15946). These epitopes were mapped onto the BDBV GP sequence to determine whether key antibody-binding residues are conserved or mutated, enabling assessment of the potential impact of sequence variation on therapeutic binding and efficacy.
@@ -31,12 +30,12 @@ Listed are the GP regions and contact residues recognized by the therapeutic ant
 
 ---
 
-# Table 2: Binding Energy Predictions
+### Table 2: Binding Energy Predictions
 **Binding Energy Predictions upon introduction of BDBV epitope mutations into EBOV GP-Inmazeb complex.**
 
 This table contains Rosetta ddG energy calculations for the full trimeric complex with mutations, as well as the independent Inmazeb components (Maftivimab/REGN3479, Atoltivimab/REGN3470, Odesivimab/REGN3471) interacting with the GP protein.
 
-## 1. Inmazeb Trimeric Complex
+#### 1. Inmazeb Trimeric Complex
 | Position | Chain | Wild Type (WT) | Mutant (MUT) | ddG (kcal/mol) | Wild Type Score | Mutant Score |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | 112 | GP1 (T) | E | D | -42.0800 | 964.3300 | 922.2500 |
@@ -72,7 +71,7 @@ This table contains Rosetta ddG energy calculations for the full trimeric comple
 
 ---
 
-# Table 3: Interface Properties
+### Table 3: Interface Properties
 **Interface properties of BDBV GP complexed with Maftivimab (REGN3479) alone versus the full Inmazeb cocktail under glycosylated and un-glycosylated states.**
 
 | Complex | State | Binding Energy (dG_separated, REU) | Interface Packing (packstat) | Glycan Effect (ΔΔG_glycan, REU) |
