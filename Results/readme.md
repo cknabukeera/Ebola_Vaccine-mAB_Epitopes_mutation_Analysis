@@ -1,5 +1,5 @@
 ---
-# Ebola Monoclonal Antibody Therapeutics vs. Bundibugyo Virus (BDBV) Glycoprotein (GP)"
+## Ebola Monoclonal Antibody Therapeutics vs. Bundibugyo Virus (BDBV) Glycoprotein (GP)
 
 ## Overview
 
