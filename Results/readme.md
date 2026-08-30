@@ -47,7 +47,7 @@ This table contains Rosetta ddG energy calculations for the full trimeric comple
 | 507 | GP2 (V) | A | T | -10.1850 | 849.9541 | 839.7691 |
 | **Net Energy**| | | | **-397.3696** | | |
 
-## 2. GP-REG3479 (Maftivimab) Interaction
+#### 2. GP-REG3479 (Maftivimab) Interaction
 | Position | Chain | Wild Type (WT) | Mutant (MUT) | ddG (kcal/mol) | Wild Type Score | Mutant Score |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | 504 | GP2 (V) | I | T | 232.9000 | 39.1000 | 272.0000 |
@@ -55,14 +55,14 @@ This table contains Rosetta ddG energy calculations for the full trimeric comple
 | 507 | GP2 (V) | A | T | -360.5846 | 391.2870 | 30.7024 |
 | **Net Energy**| | | | **174.4154** | | |
 
-## 3. GP-REGN3470 (Atoltivimab) Interaction
+#### 3. GP-REGN3470 (Atoltivimab) Interaction
 | Position | Chain | Wild Type (WT) | Mutant (MUT) | ddG (kcal/mol) | Wild Type Score | Mutant Score |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | 263 | GP1 (T) | S | N | 247.3100 | 552.6600 | 799.9700 |
 | 265 | GP1 (T) | K | R | -100.7900 | 687.6200 | 586.8300 |
 | **Net Energy**| | | | **146.5200** | | |
 
-## 4. GP-REGN3471 (Odesivimab) Interaction
+#### 4. GP-REGN3471 (Odesivimab) Interaction
 | Position | Chain | Wild Type (WT) | Mutant (MUT) | ddG (kcal/mol) | Wild Type Score | Mutant Score |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | 112 | GP1 (T) | E | D | -11.1413 | -61.5728 | -72.7142 |
